@@ -4,7 +4,7 @@ author: World Bank Development Data Group
 logo: docs/images/logo.png
 
 repository:
-    url: https://github.com/worldbank/template
+    url: https://github.com/luisesanmartin/mock-repo
     branch: main
 
 html:
@@ -13,6 +13,6 @@ html:
     use_edit_page_button: true
     use_repository_button: true
     use_issues_button: true
-    baseurl: https://worldbank.github.io/template
+    baseurl: https://luisesanmartin.github.io/mock-repo
 
 only_build_toc_files: true

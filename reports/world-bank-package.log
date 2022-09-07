@@ -1,0 +1,81 @@
+Traceback (most recent call last):
+  File "/usr/share/miniconda/envs/test/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/usr/share/miniconda/envs/test/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/share/miniconda/envs/test/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/share/miniconda/envs/test/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/share/miniconda/envs/test/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/usr/share/miniconda/envs/test/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/usr/share/miniconda/envs/test/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/share/miniconda/envs/test/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+df = api.query(
+    "SP.POP.TOTL", country=["Brazil", "China", "India", "Russia", "South Africa"]
+)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mJSONDecodeError[0m                           Traceback (most recent call last)
+File [0;32m/usr/share/miniconda/envs/test/lib/python3.9/site-packages/requests/models.py:960[0m, in [0;36mResponse.json[0;34m(self, **kwargs)[0m
+[1;32m    959[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 960[0m     [38;5;28;01mreturn[39;00m [43mcomplexjson[49m[38;5;241;43m.[39;49m[43mloads[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcontent[49m[38;5;241;43m.[39;49m[43mdecode[49m[43m([49m[43mencoding[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    961[0m [38;5;28;01mexcept[39;00m [38;5;167;01mUnicodeDecodeError[39;00m:
+[1;32m    962[0m     [38;5;66;03m# Wrong UTF codec detected; usually because it's not UTF-8[39;00m
+[1;32m    963[0m     [38;5;66;03m# but some other 8-bit codec.  This is an RFC violation,[39;00m
+[1;32m    964[0m     [38;5;66;03m# and the server didn't bother to tell us what codec *was*[39;00m
+[1;32m    965[0m     [38;5;66;03m# used.[39;00m
+
+File [0;32m/usr/share/miniconda/envs/test/lib/python3.9/json/__init__.py:346[0m, in [0;36mloads[0;34m(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)[0m
+[1;32m    343[0m [38;5;28;01mif[39;00m ([38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m object_hook [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m
+[1;32m    344[0m         parse_int [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m parse_float [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m
+[1;32m    345[0m         parse_constant [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m object_pairs_hook [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m kw):
+[0;32m--> 346[0m     [38;5;28;01mreturn[39;00m [43m_default_decoder[49m[38;5;241;43m.[39;49m[43mdecode[49m[43m([49m[43ms[49m[43m)[49m
+[1;32m    347[0m [38;5;28;01mif[39;00m [38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m/usr/share/miniconda/envs/test/lib/python3.9/json/decoder.py:337[0m, in [0;36mJSONDecoder.decode[0;34m(self, s, _w)[0m
+[1;32m    333[0m [38;5;124;03m"""Return the Python representation of ``s`` (a ``str`` instance[39;00m
+[1;32m    334[0m [38;5;124;03mcontaining a JSON document).[39;00m
+[1;32m    335[0m 
+[1;32m    336[0m [38;5;124;03m"""[39;00m
+[0;32m--> 337[0m obj, end [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mraw_decode[49m[43m([49m[43ms[49m[43m,[49m[43m [49m[43midx[49m[38;5;241;43m=[39;49m[43m_w[49m[43m([49m[43ms[49m[43m,[49m[43m [49m[38;5;241;43m0[39;49m[43m)[49m[38;5;241;43m.[39;49m[43mend[49m[43m([49m[43m)[49m[43m)[49m
+[1;32m    338[0m end [38;5;241m=[39m _w(s, end)[38;5;241m.[39mend()
+
+File [0;32m/usr/share/miniconda/envs/test/lib/python3.9/json/decoder.py:355[0m, in [0;36mJSONDecoder.raw_decode[0;34m(self, s, idx)[0m
+[1;32m    354[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m [38;5;28;01mas[39;00m err:
+[0;32m--> 355[0m     [38;5;28;01mraise[39;00m JSONDecodeError([38;5;124m"[39m[38;5;124mExpecting value[39m[38;5;124m"[39m, s, err[38;5;241m.[39mvalue) [38;5;28;01mfrom[39;00m [38;5;28mNone[39m
+[1;32m    356[0m [38;5;28;01mreturn[39;00m obj, end
+
+[0;31mJSONDecodeError[0m: Expecting value: line 2 column 9 (char 9)
+
+During handling of the above exception, another exception occurred:
+
+[0;31mJSONDecodeError[0m                           Traceback (most recent call last)
+Cell [0;32mIn [4], line 1[0m
+[0;32m----> 1[0m df [38;5;241m=[39m [43mapi[49m[38;5;241;43m.[39;49m[43mquery[49m[43m([49m
+[1;32m      2[0m [43m    [49m[38;5;124;43m"[39;49m[38;5;124;43mSP.POP.TOTL[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mcountry[49m[38;5;241;43m=[39;49m[43m[[49m[38;5;124;43m"[39;49m[38;5;124;43mBrazil[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mChina[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mIndia[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mRussia[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mSouth Africa[39;49m[38;5;124;43m"[39;49m[43m][49m
+[1;32m      3[0m [43m)[49m
+
+File [0;32m~/work/mock-repo/mock-repo/src/datalab/indicators.py:82[0m, in [0;36mWorldBankIndicatorsAPI.query[0;34m(self, indicator, country, params)[0m
+[1;32m     79[0m params[38;5;241m.[39mupdate({[38;5;124m"[39m[38;5;124mformat[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mjson[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mper_page[39m[38;5;124m"[39m: [38;5;241m1000[39m})
+[1;32m     81[0m response [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_get(indicator, country, params)
+[0;32m---> 82[0m data [38;5;241m=[39m [43mresponse[49m[38;5;241;43m.[39;49m[43mjson[49m[43m([49m[43m)[49m[[38;5;241m-[39m[38;5;241m1[39m]
+[1;32m     84[0m [38;5;28;01mreturn[39;00m pandas[38;5;241m.[39mjson_normalize(data)
+
+File [0;32m/usr/share/miniconda/envs/test/lib/python3.9/site-packages/requests/models.py:968[0m, in [0;36mResponse.json[0;34m(self, **kwargs)[0m
+[1;32m    966[0m             [38;5;28;01mpass[39;00m
+[1;32m    967[0m         [38;5;28;01mexcept[39;00m JSONDecodeError [38;5;28;01mas[39;00m e:
+[0;32m--> 968[0m             [38;5;28;01mraise[39;00m RequestsJSONDecodeError(e[38;5;241m.[39mmsg, e[38;5;241m.[39mdoc, e[38;5;241m.[39mpos)
+[1;32m    970[0m [38;5;28;01mtry[39;00m:
+[1;32m    971[0m     [38;5;28;01mreturn[39;00m complexjson[38;5;241m.[39mloads([38;5;28mself[39m[38;5;241m.[39mtext, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+[0;31mJSONDecodeError[0m: Expecting value: line 2 column 9 (char 9)
+JSONDecodeError: Expecting value: line 2 column 9 (char 9)
+
